@@ -25,3 +25,12 @@ Zombie::~Zombie()
 {
 	std::cout << "{log} Zombie destroyed" << std::endl;
 }
+
+Zombie*	zombieHorde(int n, std::string name)
+{
+	Zombie z_tab[n]
+	for (int i = 0; i < n; i++)
+	{
+		z_tab[i] = newZombie(name);
+	}
+}
