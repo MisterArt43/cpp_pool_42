@@ -114,4 +114,5 @@ int	main(void)
 		else
 			std::cout << "BAD ARG" << std::endl;
 	}
+	return 0;
 }

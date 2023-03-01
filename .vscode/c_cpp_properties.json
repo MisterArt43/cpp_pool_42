@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/clang-11",
+            "cStandard": "c17",
+            "intelliSenseMode": "linux-clang-x64",
+            "compilerArgs": [
+                "-Wall -Wextra -Werror -std=c++98 -g3"
+            ]
+        }
+    ],
+    "version": 4
+}
