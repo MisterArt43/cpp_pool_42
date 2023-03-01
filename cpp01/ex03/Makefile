@@ -1,11 +1,13 @@
-NAME = Zombie
+NAME = violenceIsTheAnswer
 
 SOURCES =		main.cpp \
-				newZombie.cpp \
-				randomChump.cpp \
-				Zombie.cpp
+				Weapon.cpp \
+				HumanA.cpp \
+				HumanB.cpp 
 
-HEADER =		Zombie.hpp
+HEADER =	Weapon.hpp \
+			HumanA.hpp \
+			HumanB.hpp 
 
 OBJS = ${SOURCES:.cpp=.o}
 

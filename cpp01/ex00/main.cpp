@@ -12,8 +12,8 @@ int main(void)
     std::cout << std::endl;
 
     Zombie zonzon("billy");
-    std::cout << "Hello " << zonzon.get_name() << "." << std::endl;
-    zonzon.set_name("rename");
+    std::cout << "Hello " << zonzon.get_name() << ". can i rename you ?" << std::endl;
+    zonzon.set_name("renamed");
     std::cout << "Hello " << zonzon.get_name() << "." << std::endl;
 
     std::cout << std::endl;
@@ -21,4 +21,5 @@ int main(void)
     std::cout << std::endl;
 
     randomChump("randomChump");
+	return 0;
 }

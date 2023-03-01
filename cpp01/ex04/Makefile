@@ -1,11 +1,8 @@
-NAME = Zombie
+NAME = ft_replace
 
-SOURCES =		main.cpp \
-				newZombie.cpp \
-				randomChump.cpp \
-				Zombie.cpp
+SOURCES =		main.cpp
 
-HEADER =		Zombie.hpp
+HEADER =	
 
 OBJS = ${SOURCES:.cpp=.o}
 

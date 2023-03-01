@@ -1,11 +1,8 @@
-NAME = Zombie
+NAME = Harl
 
-SOURCES =		main.cpp \
-				newZombie.cpp \
-				randomChump.cpp \
-				Zombie.cpp
+SOURCES =		main.cpp Harl.cpp
 
-HEADER =		Zombie.hpp
+HEADER =	Harl.hpp
 
 OBJS = ${SOURCES:.cpp=.o}
 
