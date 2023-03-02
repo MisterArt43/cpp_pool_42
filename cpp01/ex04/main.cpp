@@ -27,19 +27,21 @@ int main(int argc, char **argv)
 	if (file_str.length() == 0)
 		return(1);
 	file_str = file_str.substr(0, file_str.length() - 1);
-	//std::ofstream write_file(argv[1]);
+	std::string STD_OUT_FILE(argv[1]);
+	STD_OUT_FILE += "_replace";
+	std::ofstream write_file(STD_OUT_FILE.c_str());
 	std::string str_in(argv[2]);
 	std::string str_out(argv[3]);
 	while (file_str.length() > 0)
 	{
 		if (std::string::npos == file_str.find(argv[2]))
 		{
-			std::cout << file_str << std::endl;
+			write_file << file_str;
 			break;
 		}
-		std::cout << file_str.substr(0, file_str.find(argv[2]));
+		write_file << file_str.substr(0, file_str.find(argv[2]));
 		file_str = file_str.substr(file_str.find(argv[2]) + str_in.length());
-		std::cout << str_out;
+		write_file << str_out;
 	}
 	return 0;
 }
