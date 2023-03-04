@@ -27,7 +27,7 @@ Fixed::Fixed(int const raw)
 }
 
 Fixed::Fixed(float const raw)
-:_value((int)(raw * (1 << this->_bits)))
+:_value((int)(std::ceil(raw * (1 << this->_bits))))
 {
 	//std::cout << "Float constructor called" << std::endl;
 }
@@ -35,7 +35,7 @@ Fixed::Fixed(float const raw)
 
 float	Fixed::toFloat(void) const
 {
-	return ((float)this->_value / (float)	(1 << this->_bits));
+	return ((float)this->_value / (float)(1 << this->_bits));
 }
 
 int		Fixed::toInt(void) const
