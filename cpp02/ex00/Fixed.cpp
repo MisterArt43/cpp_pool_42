@@ -1,5 +1,3 @@
-#ifndef FIXED_H
-# define FIXED_H
 # include "./Fixed.hpp"
 
 
@@ -40,4 +38,3 @@ Fixed::~Fixed()
 {
 	std::cout << "Destructor called" << std::endl;
 }
-#endif

@@ -1,3 +1,5 @@
+#ifndef FIXED_H
+# define FIXED_H
 #include <iostream>
 #include <string>
 
@@ -15,3 +17,4 @@ public:
 	int		getRawBits(void) const;
 	void	setRawBits(int const);
 };
+#endif
