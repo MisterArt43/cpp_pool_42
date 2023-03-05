@@ -1,10 +1,12 @@
-NAME = ClapExec
+NAME = ScavExec
 
 SOURCES =		main.cpp \
 				ClapTrap.cpp \
+				ScavTrap.cpp \
 				
 
-HEADER =	ClapTrap.hpp
+HEADER =	ClapTrap.hpp \
+			ScavTrap.hpp \
 
 OBJS = ${SOURCES:.cpp=.o}
 

@@ -1,10 +1,14 @@
-NAME = ClapExec
+NAME = FragExec
 
 SOURCES =		main.cpp \
 				ClapTrap.cpp \
+				ScavTrap.cpp \
+				FragTrap.cpp \
 				
 
-HEADER =	ClapTrap.hpp
+HEADER =	ClapTrap.hpp \
+			ScavTrap.hpp \
+			FragTrap.hpp \
 
 OBJS = ${SOURCES:.cpp=.o}
 
