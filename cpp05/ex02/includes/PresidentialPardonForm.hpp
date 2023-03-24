@@ -6,7 +6,7 @@
 /*   By: abucia <abucia@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 01:56:13 by abucia            #+#    #+#             */
-/*   Updated: 2023/03/16 01:56:26 by abucia           ###   ########lyon.fr   */
+/*   Updated: 2023/03/24 21:45:42 by abucia           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,5 @@ public:
 
 	void execute( const Bureaucrat& executor ) const;
 };
-
-std::ostream &operator<<(std::ostream &o, PresidentialPardonForm const &i);
 
 #endif /* PRESIDENTIALPARDONFORM_H */

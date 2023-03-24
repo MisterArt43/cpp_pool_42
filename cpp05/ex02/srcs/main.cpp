@@ -1,153 +1,158 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abucia <abucia@student.42lyon.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/08 00:47:20 by bducrocq          #+#    #+#             */
+/*   Updated: 2023/03/24 21:45:33 by abucia           ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
+# define COLOR_RED		"\033[0;31m"
+# define COLOR_GREEN	"\033[0;32m"
+# define COLOR_YELLOW	"\033[0;33m"
+# define COLOR_BLUE		"\033[0;34m"
+# define COLOR_PURPLE	"\033[0;35m"
+# define COLOR_CYAN		"\033[0;36m"
+# define COLOR_NONE		"\033[0;37m"
+
 #include "../includes/Bureaucrat.hpp"
-#include "../includes/PresidentialPardonForm.hpp"
-#include "../includes/RobotomyRequestForm.hpp"
 #include "../includes/ShrubberyCreationForm.hpp"
-#include "../includes/Form.hpp"
+#include "../includes/RobotomyRequestForm.hpp"
+#include "../includes/PresidentialPardonForm.hpp"
 
-int main()
+void	pstr(std::string str);
+void	tryUpGrade( Bureaucrat& ref );
+void	displayGrade(Bureaucrat& ref);
+void	tryDownGrade( Bureaucrat& ref );
+
+int main(void)
 {
+	try
 	{
-		std::string	p1 = "Jean";
-		std::string	p2 = "Robert";
-		std::string	p3 = "Chirstine";
-		std::string	p4 = "Claire";
-		Bureaucrat b1;
-		Bureaucrat b2(5, p1);
-		std::cout << b1 << std::endl;
-		std::cout << b2 << std::endl;
-		std::cout << "\nNew try:" << std::endl;
-		try{
-			std::cout << b1 << std::endl;
-			std::cout << "decremente" << std::endl;
-			b1.demote();
-			std::cout << b1 << std::endl;
-		}catch(std::exception const &e){
-			std::cerr << e.what() << std::endl;
+		/**----------- TEST 1 ---------------*/
+		{
+			pstr("TEST 1 : Creations des formulaires, signatures puis executions");
+			Bureaucrat bob(136, "bob");
+			Bureaucrat ted(145, "ted");
+			ShrubberyCreationForm Form1("Jardin");
+			ShrubberyCreationForm Form2("Salon");
+			std::cout << bob << std::endl;
+			std::cout << ted << std::endl;
+			std::cout << Form1 << std::endl;
+			std::cout << Form2 << std::endl;
+			try
+			{
+				bob.executeForm(Form1);
+				bob.executeForm(Form2);
+				ted.signForm(Form1);
+				bob.signForm(Form2);
+				std::cout << Form1 << std::endl;
+				std::cout << Form2 << std::endl;
+				ted.executeForm(Form1);
+				bob.executeForm(Form1);
+				bob.executeForm(Form2);
+			}
+			catch (std::exception &e)
+			{
+				std::cerr << e.what() << std::endl;
+			}
 		}
-		std::cout << "\nNew try:" << std::endl;
-		try{
-			std::cout << b2 << std::endl;
-			std::cout << "incremente" << std::endl;
-			b2.promote();
-			std::cout << b2 << std::endl;
-		}catch(std::exception const &e){
-			std::cerr << e.what() << std::endl;
+		/**----------- TEST 2 ---------------*/
+		{
+			pstr("\nTEST 2 : Formulaires RobotomyRequestForm");
+			Bureaucrat bob(1, "bob");
+			RobotomyRequestForm Form1("Robot");
+			RobotomyRequestForm Form2("Box");
+			try
+			{
+				std::cout << bob << std::endl;
+				std::cout << Form1 << std::endl;
+				std::cout << Form2 << std::endl;
+				bob.executeForm(Form1);
+				bob.executeForm(Form2);
+				bob.signForm(Form1);
+				bob.signForm(Form2);
+				std::cout << Form1 << std::endl;
+				std::cout << Form2 << std::endl;
+				bob.executeForm(Form1);
+				bob.executeForm(Form1);
+				bob.executeForm(Form1);
+				bob.executeForm(Form1);
+				bob.executeForm(Form2);
+				bob.executeForm(Form2);
+				bob.executeForm(Form2);
+				bob.executeForm(Form2);
+			}
+			catch (std::exception &e)
+			{
+				std::cerr << e.what() << std::endl;
+			}
 		}
-		std::cout << "\nNew try:" << std::endl;
-		try {
-			std::cout << "Try creation Bureaucrat avec une grade de -1" << std::endl;
-			Bureaucrat b3(-1, p2);
-			std::cout << b3 << std::endl;
-		}catch(std::exception const &e){
-			std::cerr << p2 << " " << e.what() << std::endl;
-		}
-		std::cout << "\nNew try:" << std::endl;
-		try {
-			std::cout << "Try creation Bureaucrat avec une grade de 151" << std::endl;
-			Bureaucrat b4(151, "Exception");
-			std::cout << b4 << std::endl;
-		}catch(std::exception const &e){
-			std::cerr << e.what() << std::endl;
-		}
-		std::cout << "\nNew try:" << std::endl;
-		try{
-			std::cout << "Try creation Bureaucrat avec grade 150 et update" << std::endl;
-			Bureaucrat b5(150, "smith");
-			std::cout << b5 << std::endl;
-			b5.demote();
-			std::cout << b5 << std::endl;
-		}catch(std::exception const &e){
-			std::cerr << e.what() << std::endl;
-		}
-		std::cout << "\nNew try:" << std::endl;
-		try{
-			std::cout << "Try creation Bureaucrat avec grade 150 et update" << std::endl;
-			Bureaucrat b5(0, "main");
-			std::cout << b5 << std::endl;
-			b5.promote();
-			std::cout << b5 << std::endl;
-		}catch(std::exception const &e){
-			std::cerr << e.what() << std::endl;
+		/**----------- TEST 3 ---------------*/
+		{
+			pstr("\nTEST 2 : Formulaires PresidentialPardonForm");
+			Bureaucrat biden(1, "Biden");
+			PresidentialPardonForm Form1("Sam Bankman-Fried");
+			try
+			{
+				std::cout << biden << std::endl;
+				std::cout << Form1 << std::endl;
+				biden.executeForm(Form1);
+				biden.signForm(Form1);
+				std::cout << Form1 << std::endl;
+				biden.executeForm(Form1);
+
+			}
+			catch (std::exception &e)
+			{
+				std::cerr << e.what() << std::endl;
+			}
 		}
 	}
+	catch (std::exception &e)
 	{
-		Bureaucrat supervisor(1, "Supervisor");
-		std::cout << supervisor << std::endl;
-		Bureaucrat francis(25, "Francis");
-		std::cout << francis << std::endl;
-
-		Form *shrub = new ShrubberyCreationForm("home");
-		std::cout << *shrub << std::endl;
-		shrub->beSigned(supervisor);
-		shrub->execute(francis);
-
-		Form *pres = new PresidentialPardonForm("Francis");
-		std::cout << *pres << std::endl;
-		supervisor.signForm(*pres);
-		pres->execute(supervisor);
-
-		Form *robot = new RobotomyRequestForm("Bender");
-		std::cout << *robot << std::endl;
-		robot->beSigned(supervisor);
-		robot->execute(francis);
-		francis.executeForm(*robot);
-		francis.executeForm(*robot);
-
-		std::cout << "---" << std::endl;
-
-		try
-		{
-			francis.executeForm(*pres);
-		}
-		catch(std::exception const &e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
-
-		std::cout << "---" << std::endl;
-
-		try
-		{
-			RobotomyRequestForm robot = RobotomyRequestForm("Bender");
-			std::cout << robot << std::endl;
-			robot.execute(supervisor);
-		}
-		catch(std::exception const &e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
-
-		std::cout << "---" << std::endl;
-
-		try
-		{
-			PresidentialPardonForm pres = PresidentialPardonForm("Francis");
-			std::cout << pres << std::endl;
-			supervisor.signForm(pres);
-			pres.execute(francis);
-		}
-		catch(std::exception const &e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
-
-		std::cout << "---" << std::endl;
-
-		try
-		{
-			PresidentialPardonForm pres = PresidentialPardonForm("Francis");
-			std::cout << pres << std::endl;
-			supervisor.signForm(pres);
-			francis.executeForm(pres);
-		}
-		catch(std::exception const &e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
-
-		delete shrub;
-		delete pres;
-		delete robot;
+		std::cerr << e.what() << std::endl;
 	}
-	return 0;
+
+		pstr("END OF MAIN TEST");
+		return 0;
+}
+
+
+
+//\\\\\\\\***********************************************\\\\\\\\\\\|
+//\\\\\\\\***********************************************\\\\\\\\\\\|
+//\\\\\\\\***********************************************\\\\\\\\\\\|
+//\\\\\\\\***********************************************\\\\\\\\\\\|
+
+void	pstr(std::string str)
+{
+	std::cout << COLOR_PURPLE << str << COLOR_NONE << std::endl;
+}
+
+void	displayGrade(Bureaucrat& ref)
+{
+	std::cout << "   " << ref << std::endl;
+}
+
+void	tryDownGrade( Bureaucrat& ref )
+{
+	std::cout 
+	<< COLOR_CYAN << "[" << ref.getName() << "] "
+	<< COLOR_RED << "Try DownGrade" << COLOR_NONE << std::endl;
+	
+	ref.demote();
+	displayGrade(ref);
+}
+
+void	tryUpGrade( Bureaucrat& ref )
+{
+	std::cout 
+	<< COLOR_CYAN << "[" << ref.getName() << "] "
+	<< COLOR_GREEN << "Try UpGrade" << COLOR_NONE << std::endl;
+	ref.promote();
+	displayGrade(ref);
 }

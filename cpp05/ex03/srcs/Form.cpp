@@ -62,3 +62,9 @@ _gradeToSigne(150)
 Form::~Form()
 {
 }
+
+Form::Form( const Form& src ) : 
+_name( src.getName() ), 
+_gradeToExecute( src.getGradeToExecute() ), 
+_gradeToSigne( src.getGradeToSigne() ) 
+{}
