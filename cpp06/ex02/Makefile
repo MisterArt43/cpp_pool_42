@@ -1,6 +1,6 @@
-NAME = cast_ex01
+NAME = cast_ex02
 
-SOURCES =		srcs/main.cpp
+SOURCES =	srcs/main.cpp
 
 HEADER =	
 
