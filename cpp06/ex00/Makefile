@@ -1,8 +1,9 @@
 NAME = cast_ex00
 
-SOURCES =		srcs/main.cpp
+SOURCES =		srcs/main.cpp \
+				srcs/ScalarConverter.cpp
 
-HEADER =	
+HEADER =	includes/ScalarConverter.hpp
 
 OBJS = ${SOURCES:.cpp=.o}
 
