@@ -1,4 +1,4 @@
-NAME = template_find
+NAME = MutantStack
 
 SOURCES =		srcs/main.cpp 
 

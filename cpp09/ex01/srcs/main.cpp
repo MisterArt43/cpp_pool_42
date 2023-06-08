@@ -6,7 +6,7 @@
 /*   By: abucia <abucia@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:20:26 by abucia            #+#    #+#             */
-/*   Updated: 2023/06/05 10:15:14 by abucia           ###   ########lyon.fr   */
+/*   Updated: 2023/06/08 22:12:51 by abucia           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ int main(int argc, char **argv)
 			}
 		}
 		else if (str[i] >= '0' && str[i] <= '9')
-			stack.push(atoi(&str[i]));
+		{
+			stack.push(str[i] - '0');
+		}
 		else
 			return (std::cout << "Error: invalid character." << std::endl, 1);
 	}

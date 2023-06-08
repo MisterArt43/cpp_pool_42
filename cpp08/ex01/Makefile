@@ -1,4 +1,4 @@
-NAME = template_find
+NAME = FT_Span
 
 SOURCES =		srcs/main.cpp \
 				srcs/Span.cpp

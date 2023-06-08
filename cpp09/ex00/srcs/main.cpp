@@ -6,7 +6,7 @@
 /*   By: abucia <abucia@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:20:26 by abucia            #+#    #+#             */
-/*   Updated: 2023/06/05 05:26:40 by abucia           ###   ########lyon.fr   */
+/*   Updated: 2023/06/08 23:29:38 by abucia           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,20 @@
 bool check_date(std::string date) {
 	if (date.length() != 10 || date[4] != '-' || date[7] != '-')
 		return (false);
-	if (atoi(date.substr(0, 4).c_str()) < 1970 || atoi(date.substr(0, 4).c_str()) > 2023)
+	if (std::atoi(date.substr(0, 4).c_str()) < 1970 || std::atoi(date.substr(0, 4).c_str()) > 2023)
 		return (false);
-	switch (atoi(date.substr(5, 2).c_str()))
+	switch (std::atoi(date.substr(5, 2).c_str()))
 	{
 	case 1: case 3: case 5: case 7: case 8: case 10: case 12:
-		if (atoi(date.substr(8, 2).c_str()) < 1 || atoi(date.substr(8, 2).c_str()) > 31)
+		if (std::atoi(date.substr(8, 2).c_str()) < 1 || std::atoi(date.substr(8, 2).c_str()) > 31)
 			return (false);
 		break;
 	case 2:
-		if (atoi(date.substr(8, 2).c_str()) < 1 || atoi(date.substr(8, 2).c_str()) > 28)
+		if (std::atoi(date.substr(8, 2).c_str()) < 1 || std::atoi(date.substr(8, 2).c_str()) > 28)
 			return (false);
 		break;
 	case 4: case 6: case 9: case 11:
-		if (atoi(date.substr(8, 2).c_str()) < 1 || atoi(date.substr(8, 2).c_str()) > 30)
+		if (std::atoi(date.substr(8, 2).c_str()) < 1 || std::atoi(date.substr(8, 2).c_str()) > 30)
 			return (false);
 		break;
 	default:
@@ -43,15 +43,15 @@ bool check_date(std::string date) {
 	//get current date
 	std::time_t t = std::time(0);
 	std::tm* now = std::localtime(&t);
-	if (atoi(date.substr(0, 4).c_str()) > now->tm_year + 1900)
+	if (std::atoi(date.substr(0, 4).c_str()) > now->tm_year + 1900)
 		return (false);
-	else if (atoi(date.substr(0, 4).c_str()) == now->tm_year + 1900)
+	else if (std::atoi(date.substr(0, 4).c_str()) == now->tm_year + 1900)
 	{
-		if (atoi(date.substr(5, 2).c_str()) > now->tm_mon + 1)
+		if (std::atoi(date.substr(5, 2).c_str()) > now->tm_mon + 1)
 			return (false);
-		else if (atoi(date.substr(5, 2).c_str()) == now->tm_mon + 1)
+		else if (std::atoi(date.substr(5, 2).c_str()) == now->tm_mon + 1)
 		{
-			if (atoi(date.substr(8, 2).c_str()) > now->tm_mday)
+			if (std::atoi(date.substr(8, 2).c_str()) > now->tm_mday)
 				return (false);
 		}
 	}
@@ -60,7 +60,6 @@ bool check_date(std::string date) {
 
 bool compare_date(std::string date1, std::string date2)
 {
-	// std::cout << date1 << " " << date2 << std::endl;
 	if (std::atoi(date1.substr(0, 4).c_str()) > std::atoi(date2.substr(0, 4).c_str()))
 		return (true);
 	else if (std::atoi(date1.substr(0, 4).c_str()) == std::atoi(date2.substr(0, 4).c_str()))
@@ -68,7 +67,7 @@ bool compare_date(std::string date1, std::string date2)
 		if (std::atoi(date1.substr(5, 2).c_str()) > std::atoi(date2.substr(5, 2).c_str()))
 			return (true);
 		else if (std::atoi(date1.substr(5, 2).c_str()) == std::atoi(date2.substr(5, 2).c_str()))
-			if (atoi(date1.substr(8, 2).c_str()) > atoi(date2.substr(8, 2).c_str()))
+			if (std::atoi(date1.substr(8, 2).c_str()) > std::atoi(date2.substr(8, 2).c_str()))
 				return (true);
 	}
 	return (false);
@@ -126,7 +125,7 @@ int main(int argc, char **argv)
 		if (line.empty())
 			continue;
 		std::string date = line.substr(0, line.find(","));
-		double value = strtod(line.substr(line.find(",") + 1, line.length()).c_str(), NULL);
+		double value = std::strtod(line.substr(line.find(",") + 1, line.length()).c_str(), NULL);
 		file_contents[date] = value;
 	}
 

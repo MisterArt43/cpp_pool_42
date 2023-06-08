@@ -57,7 +57,7 @@ void ScalarConverter::convert(char *arg)
 	if (std::string(arg).length() == 1 && !std::isdigit(static_cast<int>(arg[0])))
 		d = static_cast<int>(arg[0]);
 	else
-		d = strtod(arg, NULL);
+		d = std::strtod(arg, NULL);
 	c = static_cast<char>(d);
 	d = static_cast<double>(d);
 	if (d >= std::numeric_limits<char>::min() && d <= std::numeric_limits<char>::max())

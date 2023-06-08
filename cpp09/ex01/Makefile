@@ -1,4 +1,4 @@
-NAME = crypto_exec
+NAME = RPN
 
 SOURCES =		srcs/main.cpp 
 

@@ -6,13 +6,13 @@
 /*   By: abucia <abucia@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 00:20:26 by abucia            #+#    #+#             */
-/*   Updated: 2023/06/05 09:28:52 by abucia           ###   ########lyon.fr   */
+/*   Updated: 2023/06/08 22:01:39 by abucia           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
-#include <stdlib.h>
+#include <cstdlib>
 #include <errno.h>
 #include <stdint.h>
 #include <vector>
@@ -22,13 +22,26 @@
 
 void sort_vector(std::vector<unsigned int> &vec)
 {
-	if (vec.size() <= 1)
+	if (vec.size() <= 21)
+	{
+		for (size_t i = 0; i < vec.size(); i++)
+		{
+			size_t j = i;
+			while (j > 0 && vec[j - 1] > vec[j])
+			{
+				unsigned int tmp = vec[j];
+				vec[j] = vec[j - 1];
+				vec[j - 1] = tmp;
+				j--;
+			}
+		}
 		return ;
+	}
 	std::vector<unsigned int> left;
 	std::vector<unsigned int> right;
-	for (size_t i = 0; i < vec.size() / 2; i++)
+	for (size_t i = 0; i < vec.size() >> 1; i++)
 		left.push_back(vec[i]);
-	for (size_t i = vec.size() / 2; i < vec.size(); i++)
+	for (size_t i = vec.size() >> 1; i < vec.size(); i++)
 		right.push_back(vec[i]);
 	sort_vector(left);
 	sort_vector(right);
@@ -60,13 +73,26 @@ void sort_vector(std::vector<unsigned int> &vec)
 
 void sort_deque(std::deque<unsigned int> &deq)
 {
-	if (deq.size() <= 1)
+	if (deq.size() <= 21)
+	{
+		for (size_t i = 0; i < deq.size(); i++)
+		{
+			size_t j = i;
+			while (j > 0 && deq[j - 1] > deq[j])
+			{
+				unsigned int tmp = deq[j];
+				deq[j] = deq[j - 1];
+				deq[j - 1] = tmp;
+				j--;
+			}
+		}
 		return ;
+	}
 	std::deque<unsigned int> left;
 	std::deque<unsigned int> right;
-	for (size_t i = 0; i < deq.size() / 2; i++)
+	for (size_t i = 0; i < deq.size() >> 1; i++)
 		left.push_back(deq[i]);
-	for (size_t i = deq.size() / 2; i < deq.size(); i++)
+	for (size_t i = deq.size() >> 1; i < deq.size(); i++)
 		right.push_back(deq[i]);
 	sort_deque(left);
 	sort_deque(right);
@@ -108,13 +134,13 @@ int main(int argc, char **argv)
 	errno = 0;
 	for (int i = 1; i < argc; i++)
 	{
-		double val = strtod(argv[i], NULL);
+		double val = std::strtod(argv[i], NULL);
 		if (errno || val < 0 || val > UINT32_MAX || val - (uint32_t)val)
 			return (std::cout << "Error: invalid inpute" << std::endl, 1);
 		vec.push_back((uint32_t)val);
 		deq.push_back((uint32_t)val);
 	}
-	std::cout << "Before: ";
+	std::cout << "Before: " << std::endl;
 	for (int i = 1; i < argc; i++)
 		std::cout << argv[i] << " ";
 	std::cout << std::endl;
