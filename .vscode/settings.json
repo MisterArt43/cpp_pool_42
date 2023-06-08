@@ -51,6 +51,23 @@
 		"typeinfo": "cpp",
 		"fstream": "cpp",
 		"cstring": "cpp",
-		"*.tpp": "cpp"
+		"*.tpp": "cpp",
+		"list": "cpp",
+		"set": "cpp",
+		"map": "cpp",
+		"stack": "cpp",
+		"bitset": "cpp",
+		"chrono": "cpp",
+		"complex": "cpp",
+		"condition_variable": "cpp",
+		"optional": "cpp",
+		"ratio": "cpp",
+		"mutex": "cpp",
+		"semaphore": "cpp",
+		"stop_token": "cpp",
+		"thread": "cpp",
+		"typeindex": "cpp",
+		"variant": "cpp",
+		"cerrno": "cpp"
 	}
 }
